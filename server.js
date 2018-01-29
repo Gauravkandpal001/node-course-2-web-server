@@ -2,6 +2,7 @@ const express =require('express');
 const hbs=require('hbs');
 const fs= require('fs');
 
+const port =process.env.PORT || 3000;  //HEROKU PORT SETUP LEC-15
 var app=express();
 
 hbs.registerPartials(__dirname+'/views/partials');
@@ -68,6 +69,6 @@ app.get('/bad',(req,res)=>{
     });
 });
 
-app.listen(8080,()=>{
-    console.log('you are listening to port no. 8080');
+app.listen(port,()=>{
+    console.log('you are listening to port no.'+port);
 });
