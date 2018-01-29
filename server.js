@@ -28,9 +28,10 @@ app.use((req,res,next)=>{
 //next() is also used to tell express when middleware is done. current middleware cant move to next mware until next() is encountered only after which it can continue
 //if your middleware dosent call next() ,the handlers for each request are never gonna fired
 //req.method() & req.url() are methods available in request module of express api ref
-app.use((req,res,next)=>{
+
+/*app.use((req,res,next)=>{
   res.render('maintainance.hbs');
-});
+});*/
 
 app.use(express.static(__dirname+'/public')); //middleware to teach express how to read from static directory
 
@@ -62,6 +63,13 @@ app.get('/about',(req,res)=>{
      pageTitle: 'About page'
    });
 });
+app.get('/projects',(req,res)=>{
+   res.render('projects.hbs',{
+     pageTitle: 'Projects'
+   });
+});
+
+
 //bad --send back json with error errorMessage
 app.get('/bad',(req,res)=>{
     res.send({
